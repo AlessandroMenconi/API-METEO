@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="float-left">
+    <div class=" container card" style="width: 20rem;">
+      <div class="card-body" *ngFor="let i of cardChild">
+        <h5 class="card-title">{{i.name}}</h5>
+        <ul>
+          <li>Temperatura Attuale = {{(i.main.temp-273).toFixed(2)}} C</li>
+          <li>Temperatura Minima = {{(i.main.temp_min-273).toFixed(2)}} C</li>
+          <li>Temperatura Massima = {{(i.main.temp_max-273).toFixed(2)}} C</li>
+          <li>Pressione = {{i.main.pressure}}</li>
+          <li>Umidità = {{i.main.humidity}}%</li>
+          <li>Velocità del vento = {{i.wind.speed}}</li>
+
+          <span *ngIf="(i.main.temp-273)<=20"><img
+              src="https://static.vecteezy.com/system/resources/previews/001/194/635/non_2x/snowflake-png.png"
+              style="width:100px ;height:auto" alt=""></span>
+          <span *ngIf="(i.main.temp-273)>=20"><img
+              src="https://static.vecteezy.com/system/resources/previews/001/189/216/non_2x/sun-png.png"
+              style="width:100px ;height:auto" alt=""></span>
+        </ul>
+        <a href="#" class="btn btn-primary" [routerLink]="['/forecast']" routerLinkActive="active">Dettagli</a>
+      </div>
+    </div>
+  </div>
+</div>

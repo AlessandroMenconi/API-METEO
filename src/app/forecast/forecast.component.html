@@ -1,0 +1,24 @@
+<app-navbar-vuota></app-navbar-vuota>
+<div class="container text-center">
+    <div class="row p-3" *ngFor="let card of cards;let i=index">
+        <div class="card" style="width: 18rem;" *ngFor="let giorno of card.temperatures">
+            <div class="card-body">
+                <button class="btn btn-success" (click)="delete(i)">elimina</button>
+                <h5 class="card-title">{{card.citta}}</h5>
+                <p class="card-text">Data={{giorno.data}} </p>
+                <p class="card-text">Temperatura= {{giorno.temp}}C</p>
+                <p class="card-text">Temperatura Massima del giorno= {{card.maxTemp}}C</p>
+                <p class="card-text">Temperatura Minima del giorno= {{card.minTemp}}C</p>
+                <p class="card-text">Temperatura Media del giorno= {{(card.mediaTemp).toFixed(2)}}C</p>
+                <span *ngIf="giorno.temp>=card.maxTemp">
+                    <img src="https://static.vecteezy.com/system/resources/previews/001/189/216/non_2x/sun-png.png"
+                        style="width:100px ;height:auto" alt="">
+                </span>
+                <span *ngIf="giorno.temp<=card.minTemp">
+                    <img src="https://static.vecteezy.com/system/resources/previews/001/194/635/non_2x/snowflake-png.png"
+                        style="width:100px ;height:auto" alt="">
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
